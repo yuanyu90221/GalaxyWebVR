@@ -4,12 +4,14 @@
         <title>Web VR start</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="./aframe/dist/aframe-master.js"></script>        
+        <script src="./aframe/dist/aframe-master.min.js"></script>
+        <script src="./jquery/dist/jquery.min.js"></script>
+        <script src="./js/animtaion.js"></script>        
     </head>
     <body>
         <a-scene>
             <!--新增 camera-->
-            <a-camera position="-20 0 0" look-controls wasd-controls>
+            <a-camera position="0 2 0" look-controls-enabled wasd-controls-enabled reverse-mouse-drag rotation="-45 0 0">
                 <a-cursor color="green" fuse="true"></a-cursor>
             </a-camera>
             <!--設定 outer space-->
