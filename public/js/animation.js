@@ -10,7 +10,7 @@ AFRAME.registerComponent('show-text',{
         var data = this.data;
         this.el.addEventListener('click', function(){
             console.log(data.text);
-            alert(data.text);
+            location.href='./landing/landing.html';
         });
     }
 })
