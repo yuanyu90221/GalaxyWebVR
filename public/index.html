@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <title>Web VR start</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./aframe/dist/aframe-master.js"></script>        
+    </head>
+    <body>
+        <a-scene>
+            <!--新增 camera-->
+            <a-camera position="-20 0 0">
+                <a-cursor color="#ffffff"></a-cursor>
+            </a-camera>
+            <!--設定 outer space-->
+            <a-sky src="images/space.jpg"></a-sky>
+            <!--設定 光源-->
+            <a-light type="directional" position="0 0 0" rotation="-90 0 0"   target="#directionaltarget">
+                <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
+            </a-light>
+            <a-light type="point" color="#FFF" position="-30 80 0" look-at="a-sphere"></a-light>
+            <a-light type="point" color="#AAA" position="30 80 0" look-at="a-sphere"></a-light>
+
+            <!-- Mercury -->
+            <a-sphere position="-20 -3 20" radius="1.25" scale="2 2 2" src="images/mercury.jpg">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+
+            <!-- Venus -->
+            <a-sphere position="-10 3 -13" radius="1.25" scale="1.5 1.5 1.5" src="images/venus.jpg">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+
+            <!-- Earth -->
+            <a-sphere position="0 -3 0" radius="1.25" scale="2.5 2.5 2.5" src="images/earth.jpg">
+                <a-animation attribute="rotation" begin="click" repeat="indefinite" to="0 360 0"></a-animation>
+            </a-sphere>
+            
+            <!-- Mars -->
+            <a-sphere position="10 -3 60" radius="1.25" scale="5 5 5" src="images/mars.jpg">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+
+            <!-- Jupiter -->
+            <a-sphere position="30 -3 -80" radius="1.25" scale="20 20 20" src="images/jupiter.jpg">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+
+            <!-- Saturn -->
+            <a-sphere position="90 -3 70" radius="1.25" scale="18 18 18" src="images/saturn.png">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+
+
+            <!-- Uranus -->
+            <a-sphere position="100 8 -40" radius="1.25" scale="9 9 9" src="images/uranus.png">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+
+            <!-- Neptune -->
+            <a-sphere position="60 5 0" radius="1.25" scale="3 3 3" src="images/neptune.jpg">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+
+            <!-- Sun -->
+            <a-sphere position="-200 -10 0" radius="1.25" scale="50 50 50" src="images/sun.jpg">
+                <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
+            </a-sphere>
+        </a-scene>
+    </body>
+</html>
