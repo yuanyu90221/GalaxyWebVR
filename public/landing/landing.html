@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Galaxy123</title>
+    <script src="../aframe/dist/aframe-master.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.5/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+    <!-- 主要場景 -->
+    <a-scene physics>
+            <a-entity id="player"
+                camera position="12 2 35" universal-controls kinematic-body listener>
+            </a-entity>
+            <a-entity light="color: #f4dfc2; " position="10 200 10"></a-entity>
+            <a-assets>
+                <img id="marView" src="../img/marView.png">
+                <img id="marGround" src="../img/marGround.png">
+                <img id="stone" src="../img/stone.jpg">
+                <a-asset-item id="marObj" src="../img/MarsExplorer/Mars_Explorer.obj"></a-asset-item>
+                <a-asset-item id="marMtl" src="../img/MarsExplorer/Mars_Explorer.mtl"></a-asset-item>
+            </a-assets>
+            <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 30" position="0 0 0" scale="2 3 2" material="side: back; width: 1595; height: 284;  src: #marView; shader: flat" >
+                    <!-- <a-plane id="plane" width="500" height="500" material="src: #marView;"  rotation="90 0 0" position="0 200 0" > </a-plane> -->
+            </a-entity>
+            <a-entity id="rockWrap" position="34 0 0">
+                    <a-dodecahedron src="#stone" static-body radius="5"  position="0 0 10"></a-dodecahedron>
+                    <a-dodecahedron  src="#stone"  static-body radius="7"   position="0 0 5"></a-dodecahedron>
+                    <a-dodecahedron  src="#stone"  static-body radius="5" position="0 0  0"></a-dodecahedron>    
+            </a-entity>
+            
+            <a-grid id="ground" static-body material="src:#marGround" item-width="1000" >
+                    
+            </a-grid>
+            <!-- <a-entity geometry="primitive: box" material="color: red"  width="10"  height="10" position="0 0 -5"> -->
+            <a-entity obj-model="obj: #marObj; mtl: #marMtl" scale="0.05 0.05 0.05" static-body position="20 -1 -10"></a-entity>
+            <a-sky color="#be967c" ></a-sky>
+            <!-- <a-plane id="plane" width="500" height="500" src="#marGround" rotation="-90 0 0" position="0 -1 0" > </a-plane> -->
+            <!-- <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 30" material="side: back; height: 2048; width: 2048;  src:#cockpit; shader: flat"></a-entity>       -->
+    </a-scene>
+    <script src="../js/main.js"></script>
+</body>
+</html>  
