@@ -11,4 +11,4 @@
         index.html
 ```
 # github page link
-+<>
++<https://yuanyu90221.github.io/GalaxyWebVR/public/>
