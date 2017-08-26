@@ -13,11 +13,11 @@
         <a-scene physic open-vr="">
             <a-entity>
                 <!--新增 camera-->
-                <a-camera position="0 2 0" look-controls-enabled wasd-controls-enabled reverse-mouse-drag rotation="-20 90 0">
+                <a-camera position="0 2 0" look-controls wasd-controls-enabled reverse-mouse-drag rotation="-20 90 0">
                     <a-cursor color="green" fuse="true"></a-cursor>
                     <a-text id="showMessage" color="gold" position="0 1 -2" rotation="0 0 0" transparent text="width: 4"></a-text>
                     <a-animation attribute="position" from="0 -10 -2" to="0 1 -2" dur ="10000" easing="linear"></a-animation>
-                     <a-animation attribute="rotation" from="0 0 0" to="-20 90 0" dur ="10000" easing="linear"></a-animation>
+                     <a-animation attribute="rotation" from="0 -270 0" to="-5 90 0" dur ="30000" easing="linear"></a-animation>
                 </a-camera>
                 <!--設定 outer space-->
                 <a-sky src="./images/space.jpg"></a-sky>
@@ -71,7 +71,7 @@
                     </a-sphere>
 
                     <!-- Sun -->
-                    <a-sphere id="directionaltarget" position="-400 -40 150" radius="1.25" scale="50 50 50" src="images/sun.jpg" show-text="text:Sun">
+                    <a-sphere id="directionaltarget" position="0 -40 250" radius="1.25" scale="50 50 50" src="images/sun.jpg" show-text="text:Sun">
                         <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
                     </a-sphere>
                 </a-entity>
