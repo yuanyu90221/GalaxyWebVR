@@ -14,9 +14,10 @@ AFRAME.registerComponent('show-text',{
             var earthText = document.querySelector('#showMessage');
             earthText.setAttribute('value',data.text);
             earthText.setAttribute('opacity',1);
-            // setTimeout(3000, function(){
-            //     earthText.setAttribute('opacity', 0);
-            // });
+            setTimeout( function(){
+                var earthText = document.querySelector('#showMessage');
+                earthText.setAttribute('value', '');
+            },1000);
             // mainScene.pause();
             // $.get('./landing/landing.html', function(data){
             //     // console.log(data);
