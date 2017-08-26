@@ -1,7 +1,17 @@
 $(document).ready(function(){
     
 });
-
+var checkArray = {
+ "Earth":0,
+ "Mercury":0,
+ "Venus":0,
+ "Mars":0,
+ "Jupiter":0,
+ "Saturn":0,
+ "Uranus":0,
+ "Neptune":0,
+ "Sun":0
+};
 AFRAME.registerComponent('show-text',{
     schema: {
         text: {default:'no data'}
@@ -13,21 +23,16 @@ AFRAME.registerComponent('show-text',{
             console.log(data.text);
             var earthText = document.querySelector('#showMessage');
             earthText.setAttribute('value',data.text);
-            earthText.setAttribute('opacity',1);
+            // earthText.setAttribute('opacity',1);
             setTimeout( function(){
                 var earthText = document.querySelector('#showMessage');
                 earthText.setAttribute('value', '');
             },1000);
-            // mainScene.pause();
-            // $.get('./landing/landing.html', function(data){
-            //     // console.log(data);
-            //     // $(data).find('a-scene');
-            //     // console.log(data);
-            //     // $('html').html(data);
-                // location.href= './landing/landing.html';
-
-            // });
-            // mainScene.setAttribute('template', 'src', '#scene2');
+            checkArray[`${data.text}`]++;
+            if(checkArray['Earth']>= 2 && data.text=="Earth"){
+                location.href = './landing/landing.html';
+            }
+           
         });
     }
 });
