@@ -8,9 +8,33 @@ AFRAME.registerComponent('show-text',{
     },
     init: function(){
         var data = this.data;
+        // var mainScene = document.querySelector('a-entity');
         this.el.addEventListener('click', function(){
             console.log(data.text);
-            location.href='./landing/landing.html';
+            var earthText = document.querySelector('#showMessage');
+            earthText.setAttribute('value',data.text);
+            earthText.setAttribute('opacity',1);
+            // setTimeout(3000, function(){
+            //     earthText.setAttribute('opacity', 0);
+            // });
+            // mainScene.pause();
+            // $.get('./landing/landing.html', function(data){
+            //     // console.log(data);
+            //     // $(data).find('a-scene');
+            //     // console.log(data);
+            //     // $('html').html(data);
+                // location.href= './landing/landing.html';
+
+            // });
+            // mainScene.setAttribute('template', 'src', '#scene2');
         });
     }
-})
+});
+
+AFRAME.registerComponent('open-vr',{
+    init: function(){
+        console.log('openVR');
+        var MainScene = document.querySelector('a-scene');
+        MainScene.enterVR();
+    }
+});

@@ -5,72 +5,80 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="./aframe/dist/aframe-master.min.js"></script>
+        <script src="./aframe/dist/aframe-extra.min.js"></script>
         <script src="./jquery/dist/jquery.min.js"></script>
         <script src="./js/animation.js"></script>        
     </head>
     <body>
-        <a-scene>
-            
-            <!--新增 camera-->
-            <a-camera position="0 2 0" look-controls-enabled wasd-controls-enabled reverse-mouse-drag rotation="-20 0 0">
-                <a-cursor color="green" fuse="true"></a-cursor>
-            </a-camera>
-            <!--設定 outer space-->
-            <a-sky src="./images/space.jpg"></a-sky>
-            <!--設定 光源-->
-            <a-light type="ambient"  target="#directionaltarget">
-                <!--<a-entity id="directionaltarget" position="0 0 -1"></a-entity>-->
-            </a-light>
-            <a-light type="point" color="#FFF" position="-30 80 0" look-at="a-sphere"></a-light>
-            <a-light type="point" color="#AAA" position="30 80 0" look-at="a-sphere"></a-light>
+        <a-scene physic open-vr="">
             <a-entity>
-                <a-animation attribute="rotation" easing="linear" dur="30000" repeat="indefinite" to="0 360 0"></a-animation>
-                <!-- Mercury -->
-                <a-sphere position="-20 -3 20" radius="1.25" scale="2 2 2" src="images/mercury.jpg">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                <!--新增 camera-->
+                <a-camera position="0 2 0" look-controls-enabled wasd-controls-enabled reverse-mouse-drag rotation="-20 90 0">
+                    <a-cursor color="green" fuse="true"></a-cursor>
+                    <a-text id="showMessage" color="gold" position="0 1 -2" rotation="0 0 0" transparent text="width: 4"></a-text>
+                    <a-animation attribute="position" from="0 -10 -2" to="0 1 -2" dur ="10000" easing="linear"></a-animation>
+                     <a-animation attribute="rotation" from="0 0 0" to="-20 90 0" dur ="10000" easing="linear"></a-animation>
+                </a-camera>
+                <!--設定 outer space-->
+                <a-sky src="./images/space.jpg"></a-sky>
+                <!--設定 光源-->
+                <a-light type="ambient"  target="#directionaltarget">
+                    <!--<a-entity id="directionaltarget" position="0 0 -1"></a-entity>-->
+                </a-light>
+                <a-light type="point" color="#FFF" position="-30 80 0" look-at="a-sphere"></a-light>
+                <a-light type="point" color="#AAA" position="30 80 0" look-at="a-sphere"></a-light>
+                <a-entity>
+                    <!--<a-animation attribute="rotation" easing="linear" dur="30000" repeat="indefinite" to="0 360 0"></a-animation>-->
+                    <!-- Mercury -->
+                    <a-sphere position="-20 -3 20" radius="1.25" scale="2 2 2" src="images/mercury.jpg" show-text="text:Mercury">
+                        <a-animation attribute="rotation" begin="fusing" repeat="5" to="0 360 0"></a-animation>
+                    </a-sphere>
 
-                <!-- Venus -->
-                <a-sphere position="-20 3 -13" radius="1.25" scale="1.5 1.5 1.5" src="images/venus.jpg">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                    <!-- Venus -->
+                    <a-sphere position="-20 3 -13" radius="1.25" scale="1.5 1.5 1.5" src="images/venus.jpg" show-text="text:Venus">
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
 
-                <!-- Earth -->
-                <a-sphere position="-10 3 0" radius="1.25" scale="2.5 2.5 2.5" src="images/earth.jpg" show-text="text:earth">
-                    <a-animation attribute="rotation" begin="click" repeat="1" to="0 360 0"></a-animation>
-                </a-sphere>
-                
-                <!-- Mars -->
-                <a-sphere position="10 -3 60" radius="1.25" scale="5 5 5" src="images/mars.jpg">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                    <!-- Earth -->
+                    <a-sphere position="-10 3 0" radius="1.25" scale="2.5 2.5 2.5" src="images/earth.jpg" show-text="text:Earth">                        
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
+                    
+                    <!-- Mars -->
+                    <a-sphere position="10 -3 60" radius="1.25" scale="5 5 5" src="images/mars.jpg" show-text="text:Mars">
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
 
-                <!-- Jupiter -->
-                <a-sphere position="30 -3 -80" radius="1.25" scale="20 20 20" src="images/jupiter.jpg">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                    <!-- Jupiter -->
+                    <a-sphere position="30 -3 -80" radius="1.25" scale="20 20 20" src="images/jupiter.jpg" show-text="text:Jupiter">
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
 
-                <!-- Saturn -->
-                <a-sphere position="0 -3 10" radius="1.25" scale="18 18 18" src="images/saturn.png">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                    <!-- Saturn -->
+                    <a-sphere position="0 -3 10" radius="1.25" scale="18 18 18" src="images/saturn.png" show-text="text:Saturn">
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
 
 
-                <!-- Uranus -->
-                <a-sphere position="100 8 -40" radius="1.25" scale="9 9 9" src="images/uranus.png">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                    <!-- Uranus -->
+                    <a-sphere position="100 8 -40" radius="1.25" scale="9 9 9" src="images/uranus.png" show-text="text:Uranus">
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
 
-                <!-- Neptune -->
-                <a-sphere position="60 5 0" radius="1.25" scale="3 3 3" src="images/neptune.jpg">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                    <!-- Neptune -->
+                    <a-sphere position="60 5 0" radius="1.25" scale="3 3 3" src="images/neptune.jpg" show-text="text:Neptune">
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
 
-                <!-- Sun -->
-                <a-sphere id="directionaltarget" position="-400 -200 1000" radius="1.25" scale="50 50 50" src="images/sun.jpg">
-                    <a-animation attribute="rotation" begin="click" repeat="5" to="0 360 0"></a-animation>
-                </a-sphere>
+                    <!-- Sun -->
+                    <a-sphere id="directionaltarget" position="-400 -40 150" radius="1.25" scale="50 50 50" src="images/sun.jpg" show-text="text:Sun">
+                        <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
+                    </a-sphere>
+                </a-entity>
             </a-entity>
+            <a-assets>
+                
+            </a-assets>
         </a-scene>
     </body>
 </html>
