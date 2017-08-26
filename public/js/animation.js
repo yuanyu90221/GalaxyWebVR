@@ -30,7 +30,8 @@ AFRAME.registerComponent('show-text',{
             },1000);
             checkArray[`${data.text}`]++;
             if(checkArray['Earth']>= 2 && data.text=="Earth"){
-                location.href = './landing/landing.html';
+                document.querySelector('#galaxy-scene').setAttribute('visible',false);
+                document.querySelector('#landing').setAttribute('visible',true);
             }
            
         });
