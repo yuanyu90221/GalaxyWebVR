@@ -1,6 +1,3 @@
-$(document).ready(function(){
-    
-});
 var earthText = null;
 var ca = document.querySelector('#ca');
 var beginMessage = document.querySelector('#beginMessage');
