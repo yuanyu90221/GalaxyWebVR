@@ -1,6 +1,7 @@
 $(document).ready(function(){
     
 });
+var earthText = null;
 var checkArray = {
  "Earth":0,
  "Mercury":0,
@@ -21,27 +22,28 @@ AFRAME.registerComponent('show-text',{
         // var mainScene = document.querySelector('a-entity');
         this.el.addEventListener('click', function(){
             console.log(data.text);
-            var earthText = document.querySelector('#showMessage');
+            earthText = document.querySelector('#showMessage1');
             earthText.setAttribute('value',data.text);
             // earthText.setAttribute('opacity',1);
             setTimeout( function(){
-                var earthText = document.querySelector('#showMessage');
+                // var earthText = document.querySelector('#showMessage1');
                 earthText.setAttribute('value', '');
             },1000);
             checkArray[`${data.text}`]++;
             if(checkArray['Earth']>= 2 && data.text=="Earth"){
-                document.querySelector('#galaxy-scene').setAttribute('visible',false);
-                document.querySelector('#landing').setAttribute('visible',true);
+                // document.querySelector('#galaxy-scene').setAttribute('visible',false);
+                // document.querySelector('#landing').setAttribute('visible',true);
+                location.href = './landing/landing.html';
             }
            
         });
     }
 });
 
-AFRAME.registerComponent('open-vr',{
-    init: function(){
-        console.log('openVR');
-        var MainScene = document.querySelector('a-scene');
-        MainScene.enterVR();
-    }
-});
+// AFRAME.registerComponent('open-vr',{
+//     init: function(){
+//         console.log('openVR');
+//         var MainScene = document.querySelector('a-scene');
+//         MainScene.enterVR();
+//     }
+// });

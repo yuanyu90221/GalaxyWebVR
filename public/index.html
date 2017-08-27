@@ -13,9 +13,9 @@
         <a-scene physic open-vr>
             <a-entity id="galaxy-scene">
                 <!--新增 camera-->
-                <a-camera position="0 2 0" look-controls wasd-controls-enabled reverse-mouse-drag rotation="-20 90 0">
+                <a-camera position="0 2 0" look-controls-enabled wasd-controls-enabled reverse-mouse-drag rotation="-20 90 0">
                     <a-cursor color="green" fuse="true"></a-cursor>
-                    <a-text id="showMessage" color="gold" position="0 1 -2" rotation="0 0 0" transparent text="width: 4"></a-text>
+                    <a-text id="showMessage1" color="gold" position="0 1 -2" rotation="0 0 0" transparent text="width: 4"></a-text>
                     <!--<a-entity ui-modal visible="false">
                         <a-plane width="3" height="1" color="red" position="0 -1.2 0"></a-plane>
                     </a-entity>-->
@@ -80,34 +80,59 @@
                     </a-sphere>
                 </a-entity>
             </a-entity>
-            <a-entity id="landing" visible="false">
-                <a-entity id="player"
-                camera position="12 2 35" universal-controls kinematic-body listener>
-                </a-entity>
+            <!--<a-entity id="landing" visible="false">
                 <a-entity light="color: #f4dfc2; " position="10 200 10"></a-entity>
-                <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 30" position="0 0 0" scale="2 3 2" material="side: back; width: 1595; height: 284;  src: #marView; shader: flat" >
-                        <!-- <a-plane id="plane" width="500" height="500" material="src: #marView;"  rotation="90 0 0" position="0 200 0" > </a-plane> -->
-                </a-entity>
-                <a-entity id="rockWrap" position="34 0 0">
-                        <a-dodecahedron src="#stone" static-body radius="5"  position="0 0 10"></a-dodecahedron>
-                        <a-dodecahedron  src="#stone"  static-body radius="7"   position="0 0 5"></a-dodecahedron>
-                        <a-dodecahedron  src="#stone"  static-body radius="5" position="0 0  0"></a-dodecahedron>    
+                <a-entity id="player"  camera position="-12 2 -23" rotation="0 180 0"   universal-controls="movementControls:automove, gamepad, keyboard" kinematic-body listener >
+                    <a-entity light="color: #f4dfc2;"  target="showMessage" type="ambient" position="0 0 5 "></a-entity>
+                    <a-cursor fuse="true" color="#fff" position="0 0 -2" >
+                    </a-cursor>
+                    <a-entity id="showMessage" visible="true">
+                        <a-plane width="4" height="2"  color="#fff" scale="0 0 0"  position="0 0 -2" megshowandhide>
+                                <a-animation attribute="scale" from="0 0 0" to="1 1 1" id="opening" easing="linear" dur="2000" fill="forwards"></a-animation>
+                                <a-text value="Hello Good Luck!!"    color="#000"  width="4" height="2" align="left" tab-size="0.5" position="-1 0 0">
+                                </a-text>
+                        </a-plane> 
+                        <a-entity geometry="primitive:plane;" material="src:#lee; width:2; height:2;" position="-2 0 -2"></a-entity>
+                    </a-entity>
+                </a-entity> 
+                <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 40" position="0 0 0" scale="2 3 2" material="side: back; width: 1595; height: 284;  src: #marView; shader: flat" >
                 </a-entity>
                 
-                <a-grid id="ground" static-body material="src:#marGround" item-width="1000" >
-                        
-                </a-grid>
+                <a-entity id="rockWrapTop" rotation="0 90 0" position="-22 0 -35"></a-entity>
+                <a-entity id="rockWrapLeft" position="-34 0 -35">-->
+                        <!-- <a-dodecahedron src="#stone" static-body radius="5"  position="0 0 10"></a-dodecahedron>
+                        <a-dodecahedron  src="#stone"  static-body radius="7"   position="0 0 5"></a-dodecahedron>
+                        <a-dodecahedron  src="#stone"  static-body radius="5" position="0 0  0"></a-dodecahedron>     -->
+                <!--</a-entity>
+                <a-entity id="rockWrapRight" position="34 0 -35"></a-entity>
+                <a-entity id="maze" position="0 0 10">
+                </a-entity>
+                
+                <a-grid id="ground" static-body material="src:#marGround" item-width="1000" ></a-grid>-->
                 <!-- <a-entity geometry="primitive: box" material="color: red"  width="10"  height="10" position="0 0 -5"> -->
-                <a-entity obj-model="obj: #marObj; mtl: #marMtl" scale="0.05 0.05 0.05" static-body position="20 -1 -10"></a-entity>
-                <a-sky color="#be967c" ></a-sky>
-            </a-entity>
-            <a-assets>
+                <!--<a-entity  obj-model="obj: #shipObj; mtl: #shipMtl" scale="0.04 0.04 0.04"  static-body  position="-20 2.2 -10">
+                </a-entity>
+                <a-box color="#ccc" position="-10 2 -20" check begin="fusing" effect>
+                        <a-animation begin="fusing" attribute="color" id="effect"  from="#ccc" to="#000"
+                        easing="linear" dur="2000" fill="forwards"></a-animation>
+                </a-box>
+                <a-sky color="#be967c" ></a-sky>-->
+                <!-- <a-plane id="plane" width="500" height="500" src="#marGround" rotation="-90 0 0" position="0 -1 0" > </a-plane> -->
+                <!-- <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 30" material="side: back; height: 2048; width: 2048;  src:#cockpit; shader: flat"></a-entity>       -->
+            <!--</a-entity>-->
+            <!--<a-assets>
                 <img id="marView" src="./img/marView.png">
                 <img id="marGround" src="./img/marGround.png">
                 <img id="stone" src="./img/stone.jpg">
-                <a-asset-item id="marObj" src="./img/MarsExplorer/Mars_Explorer.obj"></a-asset-item>
-                <a-asset-item id="marMtl" src="./img/MarsExplorer/Mars_Explorer.mtl"></a-asset-item>
-            </a-assets>
+                <img id="lee" src="./img/lee.png" >
+                <img id="wang" src="./img/wang.png" >
+                <img id="doFu" src="./img/dofu.png">
+                <a-asset-item id="rockObj" src="./img/rock/Rock1.obj"></a-asset-item>
+                <a-asset-item id="rockMtl" src="./img/rock/Rock1.mtl"></a-asset-item>
+                <a-asset-item id="shipObj" src="./img/Spaceship/Mars_Lander_Space_Capsule.obj"></a-asset-item>
+                <a-asset-item id="shipMtl" src="./img/Spaceship/Mars_Lander_Space_Capsule.mtl"></a-asset-item>
+            </a-assets>-->
         </a-scene>
+        <!--<script src="./js/main.js"></script>-->
     </body>
 </html>
