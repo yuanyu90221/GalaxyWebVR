@@ -129,11 +129,10 @@ AFRAME.registerComponent('check', {
           hoverCheck = true;
           showMessage.setAttribute('visible',true);
           message.setAttribute('value','GET TREASURE !!!');
-          location.href="/";
+          location.href="./GalaxyWebVR/public/";
     });
   }
 });
-
 
 
 //discover effect function
