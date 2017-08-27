@@ -16,7 +16,7 @@
 <body>
     <!-- 主要場景 -->
     <a-scene physics>
-            <a-entity light="color: #f4dfc2; " position="10 200 10"></a-entity>
+            <!-- <a-entity light="color: #f4dfc2; " position="10 100 10"></a-entity> -->
             <a-assets>
                 <img id="marView" src="../img/marView.png">
                 <img id="marGround" src="../img/marGround.png">
@@ -24,23 +24,33 @@
                 <img id="lee" src="../img/lee.png" >
                 <img id="wang" src="../img/wang.png" >
                 <img id="doFu" src="../img/dofu.png">
-                <a-asset-item id="rockObj" src="../img/rock/Rock1.obj"></a-asset-item>
-                <a-asset-item id="rockMtl" src="../img/rock/Rock1.mtl"></a-asset-item>
+                <a-asset-item id="rockObj" src="../img/rockwall/rock_01.obj"></a-asset-item>
+                <a-asset-item id="rockMtl" src="../img/rockwall/rock_01.mtl"></a-asset-item>
                 <a-asset-item id="shipObj" src="../img/Spaceship/Mars_Lander_Space_Capsule.obj"></a-asset-item>
                 <a-asset-item id="shipMtl" src="../img/Spaceship/Mars_Lander_Space_Capsule.mtl"></a-asset-item>
             </a-assets>
-            <a-entity id="player"  camera position="-12 2 -23" rotation="0 180 0"   universal-controls="movementControls:automove, gamepad, keyboard" kinematic-body listener >
-                    <a-entity light="color: #f4dfc2;"  target="showMessage" type="ambient" position="0 0 5 "></a-entity>
+             <!-- player -->
+             <a-entity id="player"  camera position="0 2 0" rotation="0 180 0"   universal-controls kinematic-body listener >
+                <!-- <a-entity light="color: #f4dfc2;"  target="showMessage" type="ambient" position="0 0 5"></a-entity> -->
                     <a-cursor fuse="true" color="#fff" position="0 0 -2" >
                             <!-- <a-entity  geometry="primitive: sphere;" position="0 0 -3"  radius="10" fuse="true" ></a-entity> -->
+                            <a-animation begin="click" attribute="color" from="#fff" to="red"  easing="linear" dur="2000" fill="forwards" ></a-animation>
+                            <a-animation begin="fusing" attribute="color" from="#fff" to="red"  easing="linear" dur="2000" fill="backwards"></a-animation>
                     </a-cursor>
                     <a-entity id="showMessage" visible="true">
                         <a-plane width="4" height="2"  color="#fff" scale="0 0 0"  position="0 0 -2" megshowandhide>
                                 <a-animation attribute="scale" from="0 0 0" to="1 1 1" id="opening" easing="linear" dur="2000" fill="forwards"></a-animation>
-                                <a-text value="Hello Good Luck!!"    color="#000"  width="4" height="2" align="left" tab-size="0.5" position="-1 0 0">
+                                <a-text value="Hello Good Luck!! Find gold Treasure."  id="message"  color="#000"  width="4" height="2" align="left" tab-size="0.5" position="-1 0 0">
                                 </a-text>
                         </a-plane> 
                         <a-entity geometry="primitive:plane;" material="src:#lee; width:2; height:2;" position="-2 0 -2"></a-entity>
+                    </a-entity>
+                    <a-entity id="treasureAlert" visible="false">
+                            <a-plane width="2" height="1"  color="#fff" scale="1 1 1"   position="-2 1 -2" >
+                                    <a-animation attribute="scale" from="1 1 1" to="0.5 0.5 0.5" dur="1000" repeat="indefinite"></a-animation>
+                                    <a-text value="Treasure Around !!"    color="red"  width="4" height="2" align="left" tab-size="0.5" position="-0.8 0 0">
+                                    </a-text>
+                            </a-plane> 
                     </a-entity>
             </a-entity> 
             <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 40" position="0 0 0" scale="2 3 2" material="side: back; width: 1595; height: 284;  src: #marView; shader: flat" >
@@ -53,17 +63,53 @@
                     <a-dodecahedron  src="#stone"  static-body radius="5" position="0 0  0"></a-dodecahedron>     -->
             </a-entity>
             <a-entity id="rockWrapRight" position="34 0 -35"></a-entity>
+            <a-entity id="rockWrapBottom" rotation="0 90 0" position="-22 0 36"></a-entity>
+            
             <a-entity id="maze" position="0 0 10">
+                <a-entity id="wall1" position="-10 0 5" >
+                        <a-dodecahedron src="#stone" static-body radius="2" visible="true"  position="0 0 2">
+                                
+                                 <!-- <a-animation begin="fusing" attribute="visible" dur="5000" to="false"   fill="forwards" ></a-animation> -->
+                         </a-dodecahedron>
+                </a-entity>
+                <a-entity id="wall2" position="10 0 5">
+                        <a-dodecahedron src="#stone" static-body radius="2" visible="true"  position="0 0 2">
+                                
+                                 <!-- <a-animation begin="fusing" attribute="visible" dur="5000" to="false"   fill="forwards" ></a-animation> -->
+                         </a-dodecahedron>
+                </a-entity>
+                <a-entity id="wall3" position="-10 0 -10">
+                        <a-dodecahedron src="#stone" static-body radius="2" visible="true"  position="0 0 -2">
+                                
+                                 <!-- <a-animation begin="fusing" attribute="visible" dur="5000" to="false"   fill="forwards" ></a-animation> -->
+                         </a-dodecahedron>
+                </a-entity>
+                <a-entity id="wall4" position="10 0 -10">
+                        <a-dodecahedron src="#stone" static-body radius="2" visible="true"  position="0 0 -2">
+                                
+                                 <!-- <a-animation begin="fusing" attribute="visible" dur="5000" to="false"   fill="forwards" ></a-animation> -->
+                         </a-dodecahedron>
+                </a-entity>
+                <a-entity obj-model="obj: #rockObj; mtl: #rockMtl" scale="0.08 0.08 0.08"  static-body  position="-15 0 15"></a-entity>
+                <a-entity obj-model="obj: #rockObj; mtl: #rockMtl" scale="0.08 0.08 0.08"  static-body  position="15 0 15"></a-entity>
+                <a-entity obj-model="obj: #rockObj; mtl: #rockMtl" scale="0.08 0.08 0.08"  static-body  position="-15 0 -15"></a-entity>
+                <a-entity obj-model="obj: #rockObj; mtl: #rockMtl" scale="0.08 0.08 0.08"  static-body  position="15 0 -15"></a-entity>
+                <a-box position="0 2.5 10" id="treasureBox1" color="gold" check>
+                        <a-animation  attribute="rotation" to="0 360 0"
+                        easing="linear" dur="1000" repeat="indefinite"></a-animation>
+                </a-box>
+                <!-- <a-box position="0 2 -20" id="treasureBox2" color="red" check></a-box> -->
             </a-entity>
             
             <a-grid id="ground" static-body material="src:#marGround" item-width="1000" ></a-grid>
             <!-- <a-entity geometry="primitive: box" material="color: red"  width="10"  height="10" position="0 0 -5"> -->
-            <a-entity  obj-model="obj: #shipObj; mtl: #shipMtl" scale="0.04 0.04 0.04"  static-body  position="-20 2.2 -10">
-            </a-entity>
-            <a-box color="#ccc" position="-10 2 -20" check begin="fusing" effect>
+            <a-entity reland>
+                    <a-entity  obj-model="obj: #shipObj; mtl: #shipMtl" scale="0.04 0.04 0.04"  static-body  position="-5 2.2 15"></a-entity>
+            </a-entity>   
+            <!-- <a-box color="#ccc" position="-10 2 10" check  effect>
                     <a-animation begin="fusing" attribute="color" id="effect"  from="#ccc" to="#000"
                     easing="linear" dur="2000" fill="forwards"></a-animation>
-            </a-box>
+            </a-box> -->
             <a-sky color="#be967c" ></a-sky>
             <!-- <a-plane id="plane" width="500" height="500" src="#marGround" rotation="-90 0 0" position="0 -1 0" > </a-plane> -->
             <!-- <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 30" material="side: back; height: 2048; width: 2048;  src:#cockpit; shader: flat"></a-entity>       -->

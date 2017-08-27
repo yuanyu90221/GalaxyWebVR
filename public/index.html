@@ -13,15 +13,17 @@
         <a-scene physic open-vr>
             <a-entity id="galaxy-scene">
                 <!--新增 camera-->
-                <a-camera position="0 2 0" look-controls-enabled wasd-controls-enabled reverse-mouse-drag rotation="-20 90 0">
+                <a-camera id="ca" position="0 -10 -2" look-controls-enabled wasd-controls-enabled reverse-mouse-drag rotation="-20 90 0">
                     <a-cursor color="green" fuse="true"></a-cursor>
-                    <a-text id="showMessage1" color="gold" position="0 1 -2" rotation="0 0 0" transparent text="width: 4"></a-text>
+                    <a-text id="showMessage1" color="gold" position="0 .5 -2" rotation="0 0 0" transparent text="width: 4"></a-text>
+                    <a-text id="showMessage2" color="gold" position="0 1 -2" rotation="0 0 0" transparent text="width: 4"></a-text>
                     <!--<a-entity ui-modal visible="false">
                         <a-plane width="3" height="1" color="red" position="0 -1.2 0"></a-plane>
                     </a-entity>-->
                     
-                    <a-animation attribute="position" from="0 -10 -2" to="0 1 -2" dur ="10000" easing="linear"></a-animation>
-                     <a-animation attribute="rotation" from="0 -270 0" to="-5 90 0" dur ="30000" easing="linear"></a-animation>
+                    <a-animation attribute="position" begin="fade" from="0 -10 -2" to="0 1 -2" dur ="10000" easing="linear"></a-animation>
+                    <a-animation attribute="rotation" begin="fade" from="0 -270 0" to="-5 90 0" dur ="30000" easing="linear"></a-animation>
+                    
                 </a-camera> 
                 <!--設定 outer space-->
                 <a-sky src="./images/space.jpg"></a-sky>
@@ -32,6 +34,13 @@
                 <a-light type="point" color="#FFF" position="-30 80 0" look-at="a-sphere"></a-light>
                 <a-light type="point" color="#AAA" position="30 80 0" look-at="a-sphere"></a-light>
                 <a-entity>
+                    <a-entity id="beginMessage" position="0 -10 -2" rotation="-20 90 0">
+                        <a-text text="width: 6;" position="0 3 -2" value="Galaxy Explore" color="gold" align="center"></a-text>
+                        <a-text text="width: 6;" position="0 2.5 -2" value="choose one Character" color="gold" align="center"></a-text>
+                        <a-entity geometry="primitive:plane;" material="src:#doFu; width:2; height:2;" position="0 1 -2" show-text="text:DoFu"></a-entity>
+                        <a-entity geometry="primitive:plane;" material="src:#wang; width:2; height:2;" position="2 1 -2" show-text="text:Wang"></a-entity>
+                        <a-entity geometry="primitive:plane;" material="src:#lee; width:2; height:2;" position="-2 1 -2" show-text="text:Lee"></a-entity>
+                    </a-entity>
                     <!--<a-animation attribute="rotation" easing="linear" dur="30000" repeat="indefinite" to="0 360 0"></a-animation>-->
                     <!-- Mercury -->
                     <a-sphere position="-20 -3 20" radius="1.25" scale="2 2 2" src="images/mercury.jpg" show-text="text:Mercury">
@@ -78,6 +87,7 @@
                     <a-sphere id="directionaltarget" position="0 -40 250" radius="1.25" scale="50 50 50" src="images/sun.jpg" show-text="text:Sun">
                         <a-animation attribute="rotation" begin="fusing" repeat="1" to="0 360 0"></a-animation>
                     </a-sphere>
+                    <a-sound id="launchMusic" src="src:url(./music/theme.mp3)" autoplay="true" position="0 2 5"></a-sound>
                 </a-entity>
             </a-entity>
             <!--<a-entity id="landing" visible="false">
@@ -120,18 +130,18 @@
                 <!-- <a-plane id="plane" width="500" height="500" src="#marGround" rotation="-90 0 0" position="0 -1 0" > </a-plane> -->
                 <!-- <a-entity geometry="primitive: sphere; thetaLength: 90; radius: 30" material="side: back; height: 2048; width: 2048;  src:#cockpit; shader: flat"></a-entity>       -->
             <!--</a-entity>-->
-            <!--<a-assets>
-                <img id="marView" src="./img/marView.png">
+            <a-assets>
+                <!--<img id="marView" src="./img/marView.png">
                 <img id="marGround" src="./img/marGround.png">
-                <img id="stone" src="./img/stone.jpg">
+                <img id="stone" src="./img/stone.jpg">-->
                 <img id="lee" src="./img/lee.png" >
                 <img id="wang" src="./img/wang.png" >
                 <img id="doFu" src="./img/dofu.png">
-                <a-asset-item id="rockObj" src="./img/rock/Rock1.obj"></a-asset-item>
+                <!--<a-asset-item id="rockObj" src="./img/rock/Rock1.obj"></a-asset-item>
                 <a-asset-item id="rockMtl" src="./img/rock/Rock1.mtl"></a-asset-item>
                 <a-asset-item id="shipObj" src="./img/Spaceship/Mars_Lander_Space_Capsule.obj"></a-asset-item>
-                <a-asset-item id="shipMtl" src="./img/Spaceship/Mars_Lander_Space_Capsule.mtl"></a-asset-item>
-            </a-assets>-->
+                <a-asset-item id="shipMtl" src="./img/Spaceship/Mars_Lander_Space_Capsule.mtl"></a-asset-item>-->
+            </a-assets>
         </a-scene>
         <!--<script src="./js/main.js"></script>-->
     </body>
