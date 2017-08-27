@@ -40,10 +40,16 @@ AFRAME.registerComponent('show-text',{
             },1000);
             checkArray[`${data.text}`]++;
             prev = data.text;
-            if(checkArray['Mars']>= 2 && data.text=="Mars"){
+            if(checkArray['Mars']>= 1 && data.text=="Mars"){
                 // document.querySelector('#galaxy-scene').setAttribute('visible',false);
                 // document.querySelector('#landing').setAttribute('visible',true);
-                location.href = './landing/landing.html';
+                
+                triggerTimer = setTimeout( function(){
+                if(prev == data.text){
+                       location.href = './landing/landing.html';
+                    }
+                    clearTimeout(triggerTimer);
+                }, 2000);
             }
             else {
                 if((checkArray['Lee']>= 1 && data.text=="Lee") || (checkArray['DoFu']>= 1 && data.text=="DoFu") || (checkArray['Wang']>= 1 && data.text=="Wang")){
