@@ -220,3 +220,11 @@ AFRAME.registerComponent('listener', {
       
     }
   });
+
+AFRAME.registerComponent('open-vr',{
+    init: function(){
+        console.log('openVR');
+        var MainScene = document.querySelector('a-scene');
+        MainScene.enterVR();
+    }
+});
